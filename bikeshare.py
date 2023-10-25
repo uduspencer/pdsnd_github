@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import datetime as dt
 import click
+import json
 
 CITY_DATA = {'chicago': 'chicago.csv',
              'new york city': 'new_york_city.csv',
@@ -348,6 +349,9 @@ def main():
 
         restart = choice("\nWould you like to restart?\n\n[y]Yes\n[n]No\n\n>")
         if restart.lower() != 'y':
+            print()
+            print(' Python Script Terminated '.center(78, '*'))
+            print()
             break
 
 
