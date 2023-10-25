@@ -5,37 +5,33 @@ import datetime as dt
 import click
 import json
 
-CITY_DATA = {'chicago': 'chicago.csv',
-             'new york city': 'new_york_city.csv',
-             'washington': 'washington.csv'}
+# Define a dictionary to map cities to their respective data files
+CITY_DATA = {
+    'chicago': 'chicago.csv',
+    'new york city': 'new_york_city.csv',
+    'washington': 'washington.csv'
+}
 
-months = ('january', 'february', 'march', 'april', 'may', 'june')
+# Define constants for months and weekdays
+MONTHS = ('january', 'february', 'march', 'april', 'may', 'june')
+WEEKDAYS = ('sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday')
 
-weekdays = ('sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday',
-            'saturday')
-
-
-def choice(prompt, choices=('y', 'n')):
-    """Return a valid input from the user given an array of possible answers.
-    """
-
+def get_user_input(prompt, valid_choices=('y', 'n')):
+    """Get and validate user input from a set of choices."""
     while True:
-        choice = input(prompt).lower().strip()
-        # terminate the program if the input is end
-        if choice == 'end':
+        user_input = input(prompt).lower().strip()
+        if user_input == 'end':
             raise SystemExit
-        # triggers if the input has only one name
-        elif ',' not in choice:
-            if choice in choices:
+        elif ',' not in user_input:
+            if user_input in valid_choices:
                 break
-        # triggers if the input has more than one name
-        elif ',' in choice:
-            choice = [i.strip().lower() for i in choice.split(',')]
-            if list(filter(lambda x: x in choices, choice)) == choice:
+        elif ',' in user_input:
+            user_choices = [choice.strip().lower() for choice in user_input.split(',')]
+            if all(choice in valid_choices for choice in user_choices):
                 break
+        prompt = "\nInvalid input. Please ensure the input format is correct and choose a valid option:\n>"
 
-        prompt = ("\nSomething is not right. Please mind the formatting and "
-                  "be sure to enter a valid option:\n>")
+
 
     return choice
 
