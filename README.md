@@ -12,6 +12,7 @@ This project consisted in using Git and GitHub with a simulated workflow to refa
 ### Files used
 bikeshare.py
 requirments.txt
+app.css
 
 ### Credits
 Thanks to the Udacity platform for providing the Programming for Data Science with Python Nanodegree program.
