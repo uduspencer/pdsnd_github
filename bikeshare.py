@@ -323,12 +323,12 @@ def main():
 
         mark_place = 0
         while True:
-            select_data = choice("\nPlease select the information you would "
-                                 "like to obtain.\n\n [ts] Time Stats\n [ss] "
-                                 "Station Stats\n [tds] Trip Duration Stats\n "
-                                 "[us] User Stats\n [rd] Display Raw Data\n "
-                                 "[r] Restart\n\n>",
-                                 ('ts', 'ss', 'tds', 'us', 'rd', 'r'))
+            select_data = choice(
+                "\nPlease select the information you would like to obtain:\n"
+                " [ts] Time Stats\n [ss] Station Stats\n [tds] Trip Duration Stats\n"
+                " [us] User Stats\n [rd] Display Raw Data\n [r] Restart\n\n>",
+                ('ts', 'ss', 'tds', 'us', 'rd', 'r')
+            )
             click.clear()
             if select_data == 'ts':
                 time_stats(df)
@@ -343,13 +343,10 @@ def main():
             elif select_data == 'r':
                 break
 
-        restart = choice("\nWould you like to restart?\n\n[y]Yes\n[n]No\n\n>")
+        restart = choice("\nWould you like to restart?\n\n[y] Yes\n[n] No\n\n>")
         if restart.lower() != 'y':
-            print()
-            print(' Python Script Terminated '.center(78, '*'))
-            print()
+            print("\nPython Script Terminated".center(78, '*'))
             break
-
 
 if __name__ == "__main__":
     main()
